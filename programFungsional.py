@@ -2,7 +2,7 @@ import random
 
 # Global variables
 theBoard = [' '] * 10   # a list of empty spaces
-available = [str(num) for num in range(0,10)] # a List Comprehension
+available = list(map(lambda x: str(x), range(0,10))) # a List Comprehension
 players = [0,'X','O']   # note that players[1] == 'X' and players[-1] == 'O'
 
 def display_board(a,b):
@@ -40,7 +40,7 @@ def full_board_check(board):
 def player_choice(board,player):
     position = 0
     
-    while position not in [1,2,3,4,5,6,7,8,9] or not space_check(board, position):
+    while position not in range(1,10) or not space_check(board, position):
         try:
             position = int(input('Player %s, choose your next position: (1-9) '%(player)))
         except:
